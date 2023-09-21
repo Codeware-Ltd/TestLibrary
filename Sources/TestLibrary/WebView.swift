@@ -97,7 +97,37 @@ private extension WebView {
     
     func tryLoad(_ url: URL?, into view: WKWebView) {
         guard let url = url else { return }
-        view.load(URLRequest(url: url))
+        //view.load(URLRequest(url: url))
+        
+        
+        let url2 = URL(string: "https://app.idesk360.com/init-iDesk-live-chat")
+        
+        let parameters = "{\r\n    \"resource_uri\": \"toolstatic.idesk360.com\",\r\n    \"app_uri\": \"tool.idesk360.com\",\r\n    \"page_id\": \"1694592792000\",\r\n   \"miscellaneous\": {\r\n    \"float\": 0\r\n  }\r\n}"
+        let postData = parameters.data(using: .utf8)
+
+        
+//           var parameters = Parameters()
+//           parameters["name"] = "Example"
+//           parameters["surname"] = "ExmpleExample"
+//           parameters["timeZone"] = "MiddleEast/MENA"
+//           parameters["test"] = "YES"
+//
+//        let parameters = [
+//                                   "username":   SessionManager.shared.username!,
+//                                   "password":  SessionManager.shared.password!,
+//                                   "vhost": "standard"
+//             ]
+                   
+           var urlRequest = URLRequest(url: url2!)
+           urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+           urlRequest.setValue("application/json", forHTTPHeaderField: "Accept")
+           urlRequest.allowsCellularAccess = true
+           urlRequest.httpMethod = "POST"
+         //  let postString = parameters.getPostString()
+//           urlRequest.httpBody = postString.data(using: .utf8)
+        urlRequest.httpBody = postData
+        
+        view.load(urlRequest)
     }
 }
 
@@ -126,3 +156,13 @@ private extension WebView {
 //        webView.load(request)
 //    }
 //}
+public extension Dictionary where Key == String, Value == Any {
+
+   func getPostString() -> String {
+      var data = [String]()
+      for(key, value) in self {
+          data.append(key + "=\(value)")
+      }
+      return data.map { String($0) }.joined(separator: "&")
+   }
+}
