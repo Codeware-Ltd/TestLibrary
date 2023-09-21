@@ -142,7 +142,23 @@ private extension WebView {
 //           urlRequest.httpBody = postString.data(using: .utf8)
         urlRequest.httpBody = jsonData
         
-        view.load(urlRequest)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            print("Faul Sajid")
+            print(data)
+//            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+//            if let responseJSON = responseJSON as? [String: Any] {
+//                print(responseJSON)
+//            }
+        }
+
+        task.resume()
+        
+      //  view.load(urlRequest)
     }
 }
 
