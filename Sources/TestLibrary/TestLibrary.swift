@@ -1,6 +1,12 @@
-public struct TestLibrary {
-    public private(set) var text = "Hello, World!"
+import SwiftUI
 
-    public init() {
+@available(macOS 10.15, *)
+extension View{
+   public func centerTL() -> some View{
+       HStack{
+           Spacer()
+           self
+           Spacer()
+       } 
     }
 }
