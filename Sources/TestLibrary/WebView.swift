@@ -102,8 +102,23 @@ private extension WebView {
         
         let url2 = URL(string: "https://app.idesk360.com/init-iDesk-live-chat")
         
-        let parameters = "{\r\n    \"resource_uri\": \"toolstatic.idesk360.com\",\r\n    \"app_uri\": \"tool.idesk360.com\",\r\n    \"page_id\": \"1694592792000\",\r\n   \"miscellaneous\": {\r\n    \"float\": 0\r\n  }\r\n}"
-        let postData = parameters.data(using: .utf8)
+        let parameters: [String: Any] = ["resource_uri":"toolstatic.idesk360.com",
+                                   "app_uri":"tool.idesk360.com",
+                                   "page_id":"1694592792000",
+                                   "customerInfo":[
+                                     "name": "kamal",
+                                     "rmn": "019667653443"
+                                   ],
+                                   "miscellaneous":[
+                                     "float": 0,
+                                   ]]
+        
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: parameters)
+        
+       // let postData = parameters.data(using: .utf8)
+        
+        
 
         
 //           var parameters = Parameters()
@@ -125,7 +140,7 @@ private extension WebView {
            urlRequest.httpMethod = "POST"
          //  let postString = parameters.getPostString()
 //           urlRequest.httpBody = postString.data(using: .utf8)
-        urlRequest.httpBody = postData
+        urlRequest.httpBody = jsonData
         
         view.load(urlRequest)
     }
