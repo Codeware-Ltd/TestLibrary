@@ -13,7 +13,7 @@ public struct iDeskChatUIView: View {
     
     var ideskAppData: IdeskAppData?
     
-    init(ideskAppData: IdeskAppData?){
+    public init(ideskAppData: IdeskAppData?){
         
         self.ideskAppData = ideskAppData
 //        var cusDictionary =  [String: Any]()

@@ -14,7 +14,7 @@ public class IdeskAppData{
     var customerInfo: [String: Any]?
     var miscellaneousDic: [String: Any]?
     
-    init(resource_uri: String, app_uri: String, page_id: String, customerInfo: [String: Any]?,miscellaneousDic: [String: Any]?) {
+   public init(resource_uri: String, app_uri: String, page_id: String, customerInfo: [String: Any]?,miscellaneousDic: [String: Any]?) {
         self.resource_uri = resource_uri
         self.app_uri = app_uri
         self.page_id = page_id
