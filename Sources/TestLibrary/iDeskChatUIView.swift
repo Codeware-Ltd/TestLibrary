@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct iDeskChatUIView: View {
+public struct iDeskChatUIView: View {
     
     @StateObject var dataFetcher = DataFetcher()
     
@@ -27,7 +27,7 @@ struct iDeskChatUIView: View {
 //         ideskAppData = IdeskAppData(resource_uri: "toolstatic.idesk360.com", app_uri: "tool.idesk360.com", page_id: "1694592792000", customerInfo: cusDictionary, miscellaneousDic: miscellaneousDic)
         
     }
-    var body: some View {
+    public var body: some View {
         
         ZStack{
             if dataFetcher.isLoading {
