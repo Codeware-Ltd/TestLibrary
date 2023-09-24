@@ -13,21 +13,21 @@ import SafariServices
 /**
  This view wraps a `SFSafariViewController` that can request
  any url you provide it with.
- 
+
  Unlike ``WebView``, this view adds a navigation bar topmost
  and a toolbar bottommost. These bars can be used to dismiss
  the view, change size, navigate, share etc.
- 
+
  When you create this view, you can provide it with a url, a
  Safari config and an optional controller configuration that
  can be used to configure the created controller instance.
  */
 
 public struct SafariWebView: UIViewControllerRepresentable {
-    
+
     /**
      Create a web view that loads the provided url.
-     
+
      - Parameters:
        - url: The url of the page to load into the web view.
        - configuration: The configuration to apply when creating the view.
@@ -42,7 +42,7 @@ public struct SafariWebView: UIViewControllerRepresentable {
         self.configuration = configuration
         self.controllerConfiguration = controllerConfiguration
     }
-    
+
     private let url: URL
     private let configuration: SFSafariViewController.Configuration
     private let controllerConfiguration: (SFSafariViewController) -> Void
